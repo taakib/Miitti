@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   IonicApp, IonicModule, IonicErrorHandler,
-  NavController, Thumbnail,
 } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -20,6 +19,7 @@ import {ProfilePage} from '../pages/profile/profile';
 import {UploadPage} from '../pages/upload/upload';
 import {HttpClientModule} from '@angular/common/http';
 import {PipesModule} from '../pipes/pipes.module';
+import {MediaplayerPage} from '../pages/mediaplayer/mediaplayer';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import {PipesModule} from '../pipes/pipes.module';
     RegisterPage,
     ProfilePage,
     UploadPage,
+    MediaplayerPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +50,8 @@ import {PipesModule} from '../pipes/pipes.module';
     LoginPage,
     RegisterPage,
     ProfilePage,
-    UploadPage
+    UploadPage,
+    MediaplayerPage
   ],
   providers: [
     StatusBar,

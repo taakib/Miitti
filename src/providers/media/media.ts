@@ -73,4 +73,8 @@ export class MediaProvider {
     return this.http.get(this.apiUrl + this.mediaUrl + '?limit=10')
   }
 
+  getNewestFile() {
+    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=1')
+  }
+
 }
