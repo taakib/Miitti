@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   IonicApp, IonicModule, IonicErrorHandler,
-  NavController,
+  NavController, Thumbnail,
 } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -19,6 +19,7 @@ import {RegisterPage} from '../pages/register/register';
 import {ProfilePage} from '../pages/profile/profile';
 import {UploadPage} from '../pages/upload/upload';
 import {HttpClientModule} from '@angular/common/http';
+import {PipesModule} from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -30,12 +31,13 @@ import {HttpClientModule} from '@angular/common/http';
     LoginPage,
     RegisterPage,
     ProfilePage,
-    UploadPage
+    UploadPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -15,6 +15,7 @@ export class MediaProvider {
   username: string;
   password: string;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
+  mediaUrl = '/media';
   status: string;
   public loggedIn: boolean;
 
@@ -63,4 +64,13 @@ export class MediaProvider {
   public register(user) {
     return this.http.post(this.apiUrl + '/users', user);
   }
+
+  getMedia() {
+    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=999')
+  }
+
+  getNewFiles() {
+    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=10')
+  }
+
 }

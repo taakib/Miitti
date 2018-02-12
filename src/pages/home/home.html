@@ -13,6 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
-  <p>You're on main page!</p>
+<ion-content padding class="cards-bg">
+  <ion-card>
+    <div class="image" *ngFor="let file of files">
+    <img [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file?.filename | thumbnail: 'medium')">
+    <ion-card-content>
+      <ion-card-title>
+        {{ file.title }}
+      </ion-card-title>
+      <p>
+        {{ file.description}}
+      </p>
+    </ion-card-content>
+    </div>
+  </ion-card>
 </ion-content>
