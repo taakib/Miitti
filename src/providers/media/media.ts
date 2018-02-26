@@ -16,7 +16,6 @@ export class MediaProvider {
   password: string;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = '/media';
-  status: string;
   public loggedIn: boolean;
 
   constructor(public http: HttpClient) {
@@ -63,10 +62,6 @@ export class MediaProvider {
 
   public register(user) {
     return this.http.post(this.apiUrl + '/users', user);
-  }
-
-  getMedia() {
-    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=999')
   }
 
   getNewFiles() {
