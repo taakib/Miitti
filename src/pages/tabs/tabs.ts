@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-
-import { ContactPage } from '../contact/contact';
-import {LoginPage} from '../login/login';
 import {UploadPage} from '../upload/upload';
 import {RegisterPage} from '../register/register';
 import {HomePage} from '../home/home';

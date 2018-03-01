@@ -12,28 +12,21 @@ export class ThumbnailPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
    */
-  transform(url: string, size: string): string {
-
-    let stringParts: String[];
-    let newUrl: string;
-
-    if (size === 'large') {
-      stringParts = url.split('.');
-      newUrl = stringParts[0] + '-tn640.png';
-      return newUrl;
-    } else if (size === 'medium') {
-      stringParts = url.split('.');
-      newUrl = stringParts[0] + '-tn320.png';
-      return newUrl;
-    } else if (size === 'small') {
-      stringParts = url.split('.');
-      newUrl = stringParts[0] + '-tn160.png';
-      return newUrl;
-    } else if (size === 'screenshot') {
-      return url;
-    } else {
-      return url;
+  transform(value: string, ...args) {
+    let size: string;
+    const temp = value.split('.');
+    switch (args[0]) {
+      case 'small':
+        size = '160';
+        break;
+      case 'medium':
+        size = '320';
+        break;
+      case 'large':
+        size = '640';
+        break;
     }
-  }
+    return temp[0] + '-tn' + size + '.png';
 
+  }
 }

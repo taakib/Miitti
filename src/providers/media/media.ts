@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../../models/user';
@@ -15,7 +15,7 @@ export class MediaProvider {
   username: string;
   password: string;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
-  mediaUrl = '/media';
+  mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
   public loggedIn: boolean;
 
   constructor(public http: HttpClient) {
@@ -42,12 +42,10 @@ export class MediaProvider {
     return this.http.post<LoginResponse>(this.apiUrl + '/login', user);
   }
 
-  getUserData() {
+  getUserData(token) {
     const settings = {
-      headers: new HttpHeaders().set('x-access-token',
-        localStorage.getItem('token')),
+      headers: new HttpHeaders().set('x-access-token', token),
     };
-
     return this.http.get(this.apiUrl + '/users/user', settings);
   }
 
@@ -64,12 +62,19 @@ export class MediaProvider {
     return this.http.post(this.apiUrl + '/users', user);
   }
 
-  getNewFiles() {
-    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=10')
+  getAllMedia() {
+    return this.http.get<Array<string>>(this.apiUrl + '/media');
   }
 
   getNewestFile() {
     return this.http.get(this.apiUrl + this.mediaUrl + '?limit=1')
   }
 
+  getSingleMedia(id) {
+    return this.http.get<Array<string>>(this.apiUrl + '/media/' + id);
+  }
+
+  getTagByFile(id) {
+    return this.http.get<Array<object>>(this.apiUrl + '/tags/file/' + id);
+  }
 }

@@ -82,4 +82,10 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.15" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.2.5">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyASIPef5zqjNEmJthJ_cH7ycUZp5LD2HGY" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyASIPef5zqjNEmJthJ_cH7ycUZp5LD2HGY'" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.0" />
+    </plugin>
 </widget>

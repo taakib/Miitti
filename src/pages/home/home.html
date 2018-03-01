@@ -11,18 +11,31 @@
 
 </ion-header>
 
-<ion-content padding class="cards-bg">
-  <ion-card>
-    <div class="image" *ngFor="let file of files">
-    <img [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file?.filename | thumbnail: 'medium')">
-    <ion-card-content>
-      <ion-card-title>
-        {{ file.title }}
-      </ion-card-title>
-      <p>
-        {{ file.description}}
-      </p>
-    </ion-card-content>
-    </div>
-  </ion-card>
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor="let row of grid">
+      <ion-col col-12 col-sm-6 *ngFor="let media of row">
+        <ion-card>
+          <ion-icon *ngIf="media.media_type == 'image'" name="md-photos"></ion-icon>
+          <ion-icon *ngIf="media.media_type == 'video'" name="videocam"></ion-icon>
+          <ion-icon *ngIf="media.media_type == 'audio'" name="volume-up"></ion-icon>
+          <img *ngIf="media.media_type == 'image'" class="card-img-top"
+               [src]="mediaProvider.mediaUrl + (media.filename | thumbnail:'medium')"
+               [alt]="media.title" (click)="openSingle(media.file_id)">
+          <video *ngIf="media.media_type == 'video'" class="card-img-top"
+                 [src]="mediaProvider.mediaUrl + media.filename"
+                 controls [poster]="mediaProvider.mediaUrl + (media.filename | thumbnail:'medium')"></video>
+          <audio *ngIf="media.media_type == 'audio'" class="card-img-top"
+                 [src]="mediaProvider.mediaUrl + media.filename"
+                 controls></audio>
+
+          <ion-card-content>
+            <ion-card-title>{{ media.title }}</ion-card-title>
+            <p class="card-text">{{ media.description }}</p>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

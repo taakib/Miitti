@@ -20,6 +20,10 @@ import {UploadPage} from '../pages/upload/upload';
 import {HttpClientModule} from '@angular/common/http';
 import {PipesModule} from '../pipes/pipes.module';
 import {MediaplayerPage} from '../pages/mediaplayer/mediaplayer';
+import {PhotoViewer} from '@ionic-native/photo-viewer';
+import {SinglePage} from '../pages/single/single';
+import {FormsModule} from '@angular/forms';
+import {MapProvider} from '../providers/map/map';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,15 @@ import {MediaplayerPage} from '../pages/mediaplayer/mediaplayer';
     RegisterPage,
     ProfilePage,
     UploadPage,
-    MediaplayerPage
+    MediaplayerPage,
+    SinglePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,13 +57,16 @@ import {MediaplayerPage} from '../pages/mediaplayer/mediaplayer';
     RegisterPage,
     ProfilePage,
     UploadPage,
-    MediaplayerPage
+    MediaplayerPage,
+    SinglePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MediaProvider,
+    MapProvider,
+    PhotoViewer
   ]
 })
 export class AppModule {}
