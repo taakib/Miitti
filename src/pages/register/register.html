@@ -1,29 +1,35 @@
-<!--
-  Generated template for the RegisterPage page.
+<ion-content class="login-content" padding>
+  <video autoplay muted loop id="myVideo">
+    <source src='../../assets/videos/loginvideo.mp4' type="video/mp4">
+  </video>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="../../assets/imgs/testpicture.jpg"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+    <form (submit)="register()">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input type="text" [(ngModel)]="user.email" placeholder="Email" name="email" required></ion-input>
+            </ion-item>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Register</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <form (submit)="register()">
-    <input [(ngModel)]="user.username" placeholder="Username" name="username">
-    <br>
-    <input type="password" [(ngModel)]="user.password" placeholder="Password" name="password">
-    <br>
-    <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email">
-    <br>
-    <input type="full_name" [(ngModel)]="user.full_name" placeholder="Full Name" name="full name">
-    <br>
-    <button type="submit">Register</button>
-    <br>
-  </form>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="user.password"  placeholder="Password" name="password" required></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit">Login</button>
+          <button ion-button class="register-btn">Create New Account</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
 </ion-content>
