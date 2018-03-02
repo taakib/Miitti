@@ -19,12 +19,15 @@ import {SinglePage} from '../single/single';
 })
 export class HomePage {
 
+  tabBarElement: any;
+  splash = true;
   mediaArray: Array<string>;
   grid: Array<Array<string>>; //array of arrays
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     public mediaProvider: MediaProvider) {
+    this.tabBarElement = document.querySelector('.tabbar');
   }
 
   openSingle(id) {
@@ -35,6 +38,11 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.tabBarElement.style.display = 'none';
+    setTimeout(() => {
+      this.splash = false;
+      this.tabBarElement.style.display = 'flex';
+    }, 4000);
     if (localStorage.getItem('token') !== null) {
       this.mediaProvider.getUserData(localStorage.getItem('token')).
         subscribe(response => {
