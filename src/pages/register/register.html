@@ -3,21 +3,19 @@
     <source src='../../assets/videos/loginvideo.mp4' type="video/mp4">
   </video>
   <ion-row class="logo-row">
-    <ion-col></ion-col>
-    <ion-col width-67>
-      <img src="../../assets/imgs/testpicture.jpg"/>
+    <ion-col>
+      <img src="../../assets/imgs/LogoPurple.svg" width="200" height="100"/>
     </ion-col>
-    <ion-col></ion-col>
   </ion-row>
-  <div class="login-box">
-    <form (submit)="register()">
+  <div class="login-box" >
+
+    <form *ngIf="checkForm()" (submit)="doLogin()">
       <ion-row>
         <ion-col>
           <ion-list inset>
             <ion-item>
-              <ion-input type="text" [(ngModel)]="user.email" placeholder="Email" name="email" required></ion-input>
+              <ion-input type="text" [(ngModel)]="user.username" placeholder="Username" name="username" required></ion-input>
             </ion-item>
-
             <ion-item>
               <ion-input type="password" [(ngModel)]="user.password"  placeholder="Password" name="password" required></ion-input>
             </ion-item>
@@ -27,9 +25,37 @@
       <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" full type="submit">Login</button>
-          <button ion-button class="register-btn">Create New Account</button>
         </ion-col>
       </ion-row>
     </form>
+
+    <form *ngIf="!checkForm()" (submit)="register()">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input type="text" [(ngModel)]="user.username" placeholder="Username" name="username" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="user.password"  placeholder="Password" name="password" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="email" [(ngModel)]="user.email"  placeholder="Email" name="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="user.full_name"  placeholder="Full name" name="full name" required></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit">Register</button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <button *ngIf="checkForm()" ion-button class="register-btn" block clear (click)="changeForm()">Create New Account</button>
+    <button *ngIf="!checkForm()" ion-button class="register-btn" block clear (click)="changeForm()">Back to login</button>
   </div>
 </ion-content>

@@ -24,6 +24,7 @@ import {PhotoViewer} from '@ionic-native/photo-viewer';
 import {SinglePage} from '../pages/single/single';
 import {FormsModule} from '@angular/forms';
 import {MapProvider} from '../providers/map/map';
+import {LoginPageModule} from '../pages/login/login.module';
 
 @NgModule({
   declarations: [
