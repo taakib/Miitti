@@ -14,13 +14,23 @@
 
 
 <ion-content padding>
+  <ion-list-header>Upload a picture</ion-list-header>
+  <ion-list>
   <form (submit)="startUpload()">
+    <ion-item>
     <input type=file name="file" (change)="setFile($event)">
+    </ion-item>
     <br>
-    <input type="text" [(ngModel)]="media.title" placeholder="Title" name="Title">
+    <ion-item>
+    <ion-input type="text" [(ngModel)]="media.title" placeholder="Title" name="Title"></ion-input>
+    </ion-item>
     <br>
-    <textarea name="description" [(ngModel)]="media.description"></textarea>
+    <ion-item>
+    <ion-textarea placeholder="Description" name="description" [(ngModel)]="media.description"></ion-textarea>
+    </ion-item>
     <br>
-    <button type="submit">Upload</button>
+    <button ion-button round outline icon-start type="submit">
+      <ion-icon name="could-upload"></ion-icon>Upload</button>
   </form>
+  </ion-list>
 </ion-content>
