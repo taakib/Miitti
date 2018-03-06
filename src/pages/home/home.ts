@@ -56,7 +56,7 @@ export class HomePage {
       this.navCtrl.setRoot(LoginPage);
     }
 
-    this.mediaProvider.getAllMedia().subscribe(data => {
+    this.mediaProvider.getPostByTag().subscribe(data => {
       console.log(data);
       this.mediaArray = data;
       this.grid = Array(Math.ceil(this.mediaArray.length / 2)); //MATHS!

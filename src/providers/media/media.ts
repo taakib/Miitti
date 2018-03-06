@@ -77,4 +77,15 @@ export class MediaProvider {
   getTagByFile(id) {
     return this.http.get<Array<object>>(this.apiUrl + '/tags/file/' + id);
   }
+
+  postTag(tag, token) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.post(this.apiUrl + '/tags', tag, settings);
+  }
+
+  getPostByTag() {
+    return this.http.get<Array<string>>(this.apiUrl + '/tags/Miitti');
+  }
 }
