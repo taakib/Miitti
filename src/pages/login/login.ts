@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HomePage} from '../home/home';
 import {User} from '../../models/user';
+import {RegisterPage} from '../register/register';
 
 /**
  * Generated class for the LoginPage page.
