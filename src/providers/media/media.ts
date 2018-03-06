@@ -88,4 +88,8 @@ export class MediaProvider {
   getPostByTag() {
     return this.http.get<Array<string>>(this.apiUrl + '/tags/Miitti');
   }
+
+  getUserInformation(id) {
+    return this.http.get<Array<string>>(this.apiUrl + '/users/' + id);
+  }
 }

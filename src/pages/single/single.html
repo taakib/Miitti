@@ -5,11 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>single</ion-title>
+  <ion-navbar color='miittipurple'>
+    <div class="titleicon">
+      <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
+    </div>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -22,6 +22,7 @@
     <ion-card-content>
       <p *ngIf="message !== ''">{{ message }}</p>
       <p *ngIf="tags !== ''">Tagged as: {{ tags }}</p>
+      <p *ngIf="userID !== ''">User ID: {{userID}}</p>
     </ion-card-content>
   </ion-card>
 
