@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../models/media';
+import {HomePage} from '../home/home';
 
 /**
  * Generated class for the UploadPage page.
@@ -41,7 +42,8 @@ export class UploadPage {
 
     this.mediaProvider.postUserFile(formData).subscribe(response => {
       console.log(response);
-      alert('Picture uploaded!')
+      alert('Picture uploaded!');
+      this.navCtrl.setRoot(HomePage);
     }, (error: HttpErrorResponse) => {
       console.log(error);
     });
