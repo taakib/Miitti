@@ -24,9 +24,6 @@
     <ion-row *ngFor="let row of grid">
       <ion-col col-12 col-sm-6 *ngFor="let media of row">
         <ion-card>
-          <ion-icon *ngIf="media.media_type == 'image'" name="md-photos"></ion-icon>
-          <ion-icon *ngIf="media.media_type == 'video'" name="videocam"></ion-icon>
-          <ion-icon *ngIf="media.media_type == 'audio'" name="volume-up"></ion-icon>
           <img *ngIf="media.media_type == 'image'" class="card-img-top"
                [src]="mediaProvider.mediaUrl + (media.filename | thumbnail:'medium')"
                [alt]="media.title" (click)="openSingle(media.file_id)">
@@ -40,8 +37,27 @@
           <ion-card-content>
             <ion-card-title>{{ media.title }}</ion-card-title>
             <p class="card-text">{{ media.description }}</p>
-
           </ion-card-content>
+          <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="miittigold" icon-start>
+                <ion-icon name='star'></ion-icon>
+                Favorite
+              </button>
+            </ion-col>
+            <ion-col text-center>
+              <button ion-button clear small color="miittigold" icon-start>
+                <ion-icon name='musical-notes'></ion-icon>
+                Listen
+              </button>
+            </ion-col>
+            <ion-col text-right>
+              <button ion-button clear small color="miittigold" icon-start>
+                <ion-icon name='share-alt'></ion-icon>
+                Share
+              </button>
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
