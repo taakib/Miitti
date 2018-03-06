@@ -20,10 +20,9 @@ export class SinglePage {
   url: string;
   title: string;
   description: string;
-  latLon: any;
+  //latLon: any;
   tags: '';
   userID: any;
-
   message = '';
 
   constructor(

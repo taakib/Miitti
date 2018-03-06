@@ -39,6 +39,7 @@ export class MediaProvider {
       token: string;
       user: User;
     }
+
     return this.http.post<LoginResponse>(this.apiUrl + '/login', user);
   }
 
@@ -54,7 +55,6 @@ export class MediaProvider {
       headers: new HttpHeaders().set('x-access-token',
         localStorage.getItem('token')),
     };
-
     return this.http.post(this.apiUrl + '/media', formData, settings);
   }
 
@@ -89,7 +89,15 @@ export class MediaProvider {
     return this.http.get<Array<string>>(this.apiUrl + '/tags/Miitti');
   }
 
+  postFavourite(token, file_id) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.post(this.apiUrl + '/favourites', file_id, settings);
+  }
+
   getUserInformation(id) {
     return this.http.get<Array<string>>(this.apiUrl + '/users/' + id);
   }
+
 }
