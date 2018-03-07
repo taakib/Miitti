@@ -20,9 +20,9 @@
     <div id="map_canvas" #map_canvas *ngIf="message === ''">
     </div>
     <ion-card-content>
+      <p>Posted by {{userID}}</p>
       <p>{{ description }}</p>
       <p>Tagged as: {{ tags }}</p>
-      <p *ngIf="userID !== ''">User ID: {{ userID }}</p>
     </ion-card-content>
   </ion-card>
 
