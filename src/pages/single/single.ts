@@ -23,7 +23,7 @@ export class SinglePage {
   description: string;
   //latLon: any;
   tags: '';
-  userID: any
+  userID: any;
   file_id: any;
   username: any;
   commenter: any;
@@ -41,8 +41,8 @@ export class SinglePage {
   }
 
   getUser(id: number) {
-    this.mediaProvider.getUserInformation(localStorage.getItem('token'), id).
-      subscribe(data => {
+    this.mediaProvider.getUserInformation(localStorage.getItem('token'), id)
+      .subscribe(data => {
       this.commenter = data;
       return this.commenter.username;
     });
@@ -54,7 +54,7 @@ export class SinglePage {
       comment: ""
     };
     console.log(file_id);
-    this.mediaProvider.postComment(localStorage.getItem('token'), id, )
+    this.mediaProvider.postComment(localStorage.getItem('token'), id, this.file_id)
     .subscribe(response => {
       console.log(response);
     }, (error: HttpErrorResponse) => {
