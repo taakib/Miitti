@@ -40,12 +40,26 @@ export class SinglePage {
     this.photoViewer.show(this.url, this.title, {share: false});
   }
 
-  getUserProfile(id: number) {
+  getUser(id: number) {
     this.mediaProvider.getUserInformation(localStorage.getItem('token'), id).
       subscribe(data => {
       this.commenter = data;
       return this.commenter.username;
-    })
+    });
+  }
+
+  addComment(id) {
+    const file_id = {
+      file_id: id,
+      comment: ""
+    };
+    console.log(file_id);
+    this.mediaProvider.postComment(localStorage.getItem('token'), id, )
+    .subscribe(response => {
+      console.log(response);
+    }, (error: HttpErrorResponse) => {
+      console.log(error)
+    });
   }
 
   ionViewDidLoad() {
@@ -64,14 +78,10 @@ export class SinglePage {
             response.forEach(t => {
               console.log(t['tag']);
               this.tags = t['tag'];
-
-              /*
-              this.mediaProvider.getUserInformation(this.mediaProvider, this.userID.toString()).
-                subscribe((result: User) => {
-                  this.username = result['username'];
-                  this.userID= result['user_id'];
-                });
-                */
+              this.mediaProvider.getUserData(localStorage.getItem('token'))
+                .subscribe( response => {
+                  this.username = response['username'];
+              })
 
               /*
             if (response.length === 0) this.message = 'No tags';

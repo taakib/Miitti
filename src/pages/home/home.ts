@@ -81,7 +81,8 @@ export class HomePage {
     this.mediaProvider.getPostByTag().subscribe(data => {
       console.log(data);
       this.mediaArray = data;
-      this.grid = Array(Math.ceil(this.mediaArray.length)); //MATHS!
+      this.mediaArray.reverse();
+      this.grid = Array(Math.ceil(this.mediaArray.length) ); //MATHS!
       console.log(this.grid);
       let rowNum = 0; //counter to iterate over the rows in the grid
 

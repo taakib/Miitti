@@ -104,4 +104,11 @@ export class MediaProvider {
     return this.http.get<Array<string>>(this.apiUrl + '/users/' + id, settings);
   }
 
+  postComment(token, file_id, comment){
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.post(this.apiUrl + '/comments' + file_id, comment, settings)
+  }
+
 }
