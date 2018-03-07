@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {MediaProvider} from '../../providers/media/media';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 /**
  * Generated class for the ProfilePage page.
@@ -15,7 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  apiUrl = 'http://media.mw.metropolia.fi/wbma';
+  mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider, public http: HttpClient) {
+  }
+
+  getUserData(token) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.get(this.apiUrl + '/users/user', settings);
   }
 
   ionViewDidLoad() {
