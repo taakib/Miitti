@@ -19,9 +19,10 @@ import {MapProvider} from '../../providers/map/map';
 export class SinglePage {
   url: string;
   title: string;
-  latLon: any;
+  description: string;
+  //latLon: any;
   tags: '';
-
+  userID: any;
   message = '';
 
   constructor(
@@ -42,10 +43,9 @@ export class SinglePage {
         console.log(response);
         this.url = this.mediaProvider.mediaUrl + response['filename'];
         this.title = response['title'];
-        this.title = response['description'];
-
+        this.description = response['description'];
+        this.userID = response['user_id'];
         this.mediaProvider.getTagByFile(response['file_id']).
-
           subscribe(response => {
             console.log(response);
             if (response.length === 0) this.message = 'No tags';
@@ -53,6 +53,8 @@ export class SinglePage {
               //const tag = JSON.parse(t['tag']);
               console.log(t['tag']);
               this.tags = t['tag'];
+
+
               /*
               if (tag.name === 'latLon') {
                 this.latLon = tag.value;

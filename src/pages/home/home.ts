@@ -36,6 +36,19 @@ export class HomePage {
     });
   }
 
+  postAttending(id) {
+    const file_id = {
+      file_id: id
+    };
+    console.log(file_id);
+    this.mediaProvider.postFavourite(localStorage.getItem('token'), file_id)
+    .subscribe(response => {
+      console.log(response);
+    }, (error: HttpErrorResponse) => {
+      console.log(error)
+    });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
     this.tabBarElement.style.display = 'none';
@@ -56,7 +69,7 @@ export class HomePage {
       this.navCtrl.setRoot(LoginPage);
     }
 
-    this.mediaProvider.getAllMedia().subscribe(data => {
+    this.mediaProvider.getPostByTag().subscribe(data => {
       console.log(data);
       this.mediaArray = data;
       this.grid = Array(Math.ceil(this.mediaArray.length / 2)); //MATHS!

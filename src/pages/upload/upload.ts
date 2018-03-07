@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {
+  IonicPage, NavController,
+  NavParams,
+} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../models/media';
+import {HomePage} from '../home/home';
 
 /**
  * Generated class for the UploadPage page.
@@ -25,7 +29,10 @@ export class UploadPage {
 
   file: File;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public mediaProvider: MediaProvider) {
   }
 
   setFile(evt) {
@@ -41,7 +48,20 @@ export class UploadPage {
 
     this.mediaProvider.postUserFile(formData).subscribe(response => {
       console.log(response);
-      alert('Picture uploaded!')
+      alert('Picture uploaded!');
+      const fileId = response['file_id'];
+      const tagContent = {
+        file_id: fileId,
+        tag: 'Miitti',
+      };
+      this.mediaProvider.postTag(tagContent, localStorage.getItem('token')).
+        subscribe(response => {
+          setTimeout(() => {
+            this.navCtrl.setRoot(HomePage);
+          }, 1500);
+        }, (tagError: HttpErrorResponse) => {
+          console.log(tagError);
+        });
     }, (error: HttpErrorResponse) => {
       console.log(error);
     });

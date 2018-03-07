@@ -40,21 +40,15 @@
           </ion-card-content>
           <ion-row no-padding>
             <ion-col>
-              <button ion-button clear small color="miittigold" icon-start>
+              <button (click)="postAttending(media.file_id)" ion-button clear small color="miittigold" icon-start>
                 <ion-icon name='star'></ion-icon>
-                Favorite
-              </button>
-            </ion-col>
-            <ion-col text-center>
-              <button ion-button clear small color="miittigold" icon-start>
-                <ion-icon name='musical-notes'></ion-icon>
-                Listen
+                Attend!
               </button>
             </ion-col>
             <ion-col text-right>
-              <button ion-button clear small color="miittigold" icon-start>
-                <ion-icon name='share-alt'></ion-icon>
-                Share
+              <button (click)="openSingle(media.file_id)" ion-button clear small color="miittigold" icon-start>
+                <ion-icon name='text'></ion-icon>
+                Comment
               </button>
             </ion-col>
           </ion-row>
