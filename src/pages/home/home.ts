@@ -36,6 +36,15 @@ export class HomePage {
     });
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   postAttending(id) {
     const file_id = {
       file_id: id
@@ -72,13 +81,13 @@ export class HomePage {
     this.mediaProvider.getPostByTag().subscribe(data => {
       console.log(data);
       this.mediaArray = data;
-      this.grid = Array(Math.ceil(this.mediaArray.length / 2)); //MATHS!
+      this.grid = Array(Math.ceil(this.mediaArray.length)); //MATHS!
       console.log(this.grid);
       let rowNum = 0; //counter to iterate over the rows in the grid
 
       for (let i = 0; i < this.mediaArray.length; i += 2) { //iterate images
 
-        this.grid[rowNum] = Array(2); //declare two elements per row
+        this.grid[rowNum] = Array(1); //declare two elements per row
 
         if (this.mediaArray[i]) { //check file URI exists
           this.grid[rowNum][0] = this.mediaArray[i]; //insert image

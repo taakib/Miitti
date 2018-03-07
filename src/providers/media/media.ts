@@ -62,9 +62,6 @@ export class MediaProvider {
     return this.http.post(this.apiUrl + '/users', user);
   }
 
-  getAllMedia() {
-    return this.http.get<Array<string>>(this.apiUrl + '/media');
-  }
 
   getNewestFile() {
     return this.http.get(this.apiUrl + this.mediaUrl + '?limit=1')
@@ -89,6 +86,10 @@ export class MediaProvider {
     return this.http.get<Array<string>>(this.apiUrl + '/tags/Miitti');
   }
 
+  getAllMedia() {
+    return this.http.get<Array<string>>(this.apiUrl + '/media');
+  }
+
   postFavourite(token, file_id) {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', token),
@@ -96,8 +97,11 @@ export class MediaProvider {
     return this.http.post(this.apiUrl + '/favourites', file_id, settings);
   }
 
-  getUserInformation(id) {
-    return this.http.get<Array<string>>(this.apiUrl + '/users/' + id);
+  getUserInformation(token, id) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.get<Array<string>>(this.apiUrl + '/users/' + id, settings);
   }
 
 }

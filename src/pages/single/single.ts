@@ -4,6 +4,7 @@ import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {PhotoViewer} from '@ionic-native/photo-viewer';
 import {MapProvider} from '../../providers/map/map';
+import {User} from '../../models/user';
 
 /**
  * Generated class for the SinglePage page.
@@ -22,8 +23,12 @@ export class SinglePage {
   description: string;
   //latLon: any;
   tags: '';
-  userID: any;
+  userID: any
+  file_id: any;
+  username: any;
+  commenter: any;
   message = '';
+  user: User;
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
@@ -33,6 +38,14 @@ export class SinglePage {
 
   showImage() {
     this.photoViewer.show(this.url, this.title, {share: false});
+  }
+
+  getUserProfile(id: number) {
+    this.mediaProvider.getUserInformation(localStorage.getItem('token'), id).
+      subscribe(data => {
+      this.commenter = data;
+      return this.commenter.username;
+    })
   }
 
   ionViewDidLoad() {
@@ -48,14 +61,25 @@ export class SinglePage {
         this.mediaProvider.getTagByFile(response['file_id']).
           subscribe(response => {
             console.log(response);
+            response.forEach(t => {
+              console.log(t['tag']);
+              this.tags = t['tag'];
+
+              /*
+              this.mediaProvider.getUserInformation(this.mediaProvider, this.userID.toString()).
+                subscribe((result: User) => {
+                  this.username = result['username'];
+                  this.userID= result['user_id'];
+                });
+                */
+
+              /*
             if (response.length === 0) this.message = 'No tags';
             response.forEach(t => {
               //const tag = JSON.parse(t['tag']);
               console.log(t['tag']);
               this.tags = t['tag'];
 
-
-              /*
               if (tag.name === 'latLon') {
                 this.latLon = tag.value;
               } else {
@@ -67,7 +91,7 @@ export class SinglePage {
               } else {
                 this.mapProvider.loadMap('map_canvas', this.latLon);
               }
-              */
+            */
             });
 
           });
