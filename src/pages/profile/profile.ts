@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {LoginPage} from '../login/login';
 
 /**
  * Generated class for the ProfilePage page.
@@ -19,19 +20,24 @@ export class ProfilePage {
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
+  userInfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider, public http: HttpClient) {
   }
 
-  getUserData(token) {
-    const settings = {
-      headers: new HttpHeaders().set('x-access-token', token),
-    };
-    return this.http.get(this.apiUrl + '/users/user', settings);
-  }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    if (localStorage.getItem('token') !== null) {
+      this.mediaProvider.getUserData(localStorage.getItem('token')).
+      subscribe(response => {
+        this.userInfo = response;
+        this.mediaProvider.loggedIn = true;
+      }, (error: HttpErrorResponse) => {
+        console.log(error);
+        this.navCtrl.setRoot(LoginPage);
+      });
+    } else {
+      this.navCtrl.setRoot(LoginPage);
+    }
   }
 
 }
