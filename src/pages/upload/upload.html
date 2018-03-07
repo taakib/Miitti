@@ -6,8 +6,10 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Upload</ion-title>
+  <ion-navbar color="miittipurple">
+    <div class="titleicon">
+      <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
+    </div>
   </ion-navbar>
 
 </ion-header>
@@ -29,7 +31,7 @@
     <ion-textarea placeholder="Description" name="description" [(ngModel)]="media.description"></ion-textarea>
     </ion-item>
     <br>
-    <button ion-button round outline color="miittigold" icon-start type="submit">
+    <button ion-button round color="miittigold" icon-start type="submit">
       <ion-icon name="add"></ion-icon>Upload</button>
   </form>
   </ion-list>
