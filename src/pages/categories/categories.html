@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color='miittipurple'>
+    <ion-buttons start ion-button icon-only color="miittigold">
+      <ion-icon name="search"></ion-icon>
+    </ion-buttons>
+    <div class="titleicon">
+      <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
+    </div>
+    <ion-buttons end ion-button icon-only color="miittigold">
+      <ion-icon name="more"></ion-icon>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item class="category">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/football.jpg">
+      </ion-thumbnail>
+      <h2>Football</h2>
+      <p>X people playing!</p>
+      <button (click)= "openCategory()" ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-item>
+    <ion-item class="category">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/icehockey.jpg">
+      </ion-thumbnail>
+      <h2>Ice Hockey</h2>
+      <p>X people playing!</p>
+      <button ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-item>
+    <ion-item  class="category">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/testpicture.jpg">
+      </ion-thumbnail>
+      <h2>Discgolf</h2>
+      <p>X people playing!</p>
+      <button ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-item>
+    <ion-item  class="category">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/tennis.jpg">
+      </ion-thumbnail>
+      <h2>Tennis</h2>
+      <p>X people playing!</p>
+      <button ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+</ion-content>

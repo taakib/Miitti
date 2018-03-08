@@ -17,6 +17,7 @@ import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {ProfilePage} from '../pages/profile/profile';
 import {UploadPage} from '../pages/upload/upload';
+import {CategoriesPage} from '../pages/categories/categories';
 import {HttpClientModule} from '@angular/common/http';
 import {PipesModule} from '../pipes/pipes.module';
 import {MediaplayerPage} from '../pages/mediaplayer/mediaplayer';
@@ -24,6 +25,9 @@ import {PhotoViewer} from '@ionic-native/photo-viewer';
 import {SinglePage} from '../pages/single/single';
 import {FormsModule} from '@angular/forms';
 import {MapProvider} from '../providers/map/map';
+import {CategoriesPageModule} from '../pages/categories/categories.module';
+import {HomePageModule} from '../pages/home/home.module';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import {MapProvider} from '../providers/map/map';
     ProfilePage,
     UploadPage,
     MediaplayerPage,
-    SinglePage
+    SinglePage,
+    CategoriesPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,8 @@ import {MapProvider} from '../providers/map/map';
     ProfilePage,
     UploadPage,
     MediaplayerPage,
-    SinglePage
+    SinglePage,
+    CategoriesPage
   ],
   providers: [
     StatusBar,
