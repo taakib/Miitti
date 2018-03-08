@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {UploadPage} from '../upload/upload';
 import {RegisterPage} from '../register/register';
 import {HomePage} from '../home/home';
-import {MediaplayerPage} from '../mediaplayer/mediaplayer';
 import {ProfilePage} from '../profile/profile';
 
 @Component({

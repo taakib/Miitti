@@ -5,25 +5,40 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+
   <ion-navbar color='miittipurple'>
     <div class="titleicon">
       <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
     </div>
   </ion-navbar>
+
 </ion-header>
 
 
 <ion-content padding>
+
   <ion-card>
     <ion-card-title>{{title}}</ion-card-title>
     <img [src]="url" (click)="showImage()">
     <div id="map_canvas" #map_canvas *ngIf="message === ''">
     </div>
     <ion-card-content>
-      <p>Posted by {{username}}</p>
-      <p>{{ description }}</p>
-      <p>Tagged as: {{ tags }}</p>
+      <p class="card-text">Posted by: {{username}}</p>
+      <p class="card-text">Description: {{ description }}</p>
+      <p class="card-text">Tagged as: {{ tags }}</p>
     </ion-card-content>
   </ion-card>
+
+  <div class="form" color="primary">
+    <form id="commentForm">
+      <ion-item>
+        <ion-label color="primary" floating>Write a comment</ion-label>
+        <ion-input [(ngModel)]="commentData.comment" type="text" name="comment"></ion-input>
+      </ion-item>
+    </form>
+    <button *ngIf="commentData.comment" class="commen t-btn" ion-button block (click)="addComment()">
+      <ion-icon *ngIf="commentData.comment" name="text"></ion-icon>
+    </button>
+  </div>
 
 </ion-content>

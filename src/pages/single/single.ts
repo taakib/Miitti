@@ -5,6 +5,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {PhotoViewer} from '@ionic-native/photo-viewer';
 import {MapProvider} from '../../providers/map/map';
 import {User} from '../../models/user';
+import {Comment} from '../../models/comment';
 
 /**
  * Generated class for the SinglePage page.
@@ -23,12 +24,17 @@ export class SinglePage {
   description: string;
   //latLon: any;
   tags: '';
-  userID: any
+  userID: any;
   file_id: any;
   username: any;
   commenter: any;
   message = '';
   user: User;
+
+  commentData: Comment = {
+    file_id: "",
+    comment: ""
+  };
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
@@ -48,17 +54,14 @@ export class SinglePage {
     });
   }
 
-  addComment(id) {
-    const file_id = {
-      file_id: id,
-      comment: ""
-    };
-    console.log(file_id);
-    this.mediaProvider.postComment(localStorage.getItem('token'), id, )
+  addComment() {
+    this.commentData.file_id = this.file_id;
+    this.mediaProvider.postComment(localStorage.getItem('token'), this.commentData)
     .subscribe(response => {
-      console.log(response);
+      //this.refresh();
+      document.forms["commentForm"].reset();
     }, (error: HttpErrorResponse) => {
-      console.log(error)
+      console.log(error);
     });
   }
 
