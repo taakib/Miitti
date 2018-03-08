@@ -13,45 +13,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar
-    [(ngModel)]="myInput"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)">
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()">
   </ion-searchbar>
 
   <ion-list>
-    <ion-item class="category">
+    <ion-item *ngFor="let item of sports" class="category">
       <ion-thumbnail item-start>
-        <img src="../../assets/imgs/football.jpg">
+        <img src="../../assets/imgs/{{item.title}}.jpg">
       </ion-thumbnail>
-      <h2>Football</h2>
+      <h2>{{item.title}}</h2>
       <p>X people playing!</p>
       <button (click)= "openCategory()" ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
     </ion-item>
-    <ion-item class="category">
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/icehockey.jpg">
-      </ion-thumbnail>
-      <h2>Ice Hockey</h2>
-      <p>X people playing!</p>
-      <button ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
-    </ion-item>
-    <ion-item  class="category">
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/testpicture.jpg">
-      </ion-thumbnail>
-      <h2>Discgolf</h2>
-      <p>X people playing!</p>
-      <button ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
-    </ion-item>
-    <ion-item  class="category">
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/tennis.jpg">
-      </ion-thumbnail>
-      <h2>Tennis</h2>
-      <p>X people playing!</p>
-      <button ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
-    </ion-item>
   </ion-list>
+
 </ion-content>
