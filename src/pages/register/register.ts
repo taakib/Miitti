@@ -30,16 +30,12 @@ export class RegisterPage {
   constructor(
     private navCtrl: NavController, public navParams: NavParams,
     public mediaProvider: MediaProvider) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-
- /* public createAccount() {
-    this.navCtrl.push('LoginPage');
-  }
-*/
   register() {
     console.log(this.user);
 
@@ -48,7 +44,9 @@ export class RegisterPage {
         console.log(response);
         this.mediaProvider.username = this.user.username;
         this.mediaProvider.password = this.user.password;
+        this.login = !this.login;
       }, (error: HttpErrorResponse) => {
+        alert("Error in registeration!")
         console.log(error.error.message);
       });
   }
