@@ -47,12 +47,13 @@ export class SinglePage {
   }
 
   getUser(id: number) {
-    this.mediaProvider.getUserInformation(localStorage.getItem('token'), id).
-      subscribe(data => {
+    this.mediaProvider.getUserInformation(localStorage.getItem('token'), id)
+      .subscribe(data => {
       this.commenter = data;
       return this.commenter.username;
     });
   }
+
 
   addComment() {
     this.commentData.file_id = this.file_id;

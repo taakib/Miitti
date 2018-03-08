@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color='miittipurple'>
+    <ion-buttons start ion-button icon-only color="miittigold">
+      <ion-icon name="search"></ion-icon>
+    </ion-buttons>
+    <div class="titleicon">
+      <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
+    </div>
+    <ion-buttons end ion-button icon-only color="miittigold">
+      <ion-icon name="more"></ion-icon>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let item of sports" class="category">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/{{item.title}}.jpg">
+      </ion-thumbnail>
+      <h2>{{item.title}}</h2>
+      <p>X people playing!</p>
+      <button (click)= "openCategory()" ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

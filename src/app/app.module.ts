@@ -9,7 +9,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MediaProvider } from '../providers/media/media';
@@ -17,6 +17,7 @@ import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {ProfilePage} from '../pages/profile/profile';
 import {UploadPage} from '../pages/upload/upload';
+import {CategoriesPage} from '../pages/categories/categories';
 import {HttpClientModule} from '@angular/common/http';
 import {PipesModule} from '../pipes/pipes.module';
 import {MediaplayerPage} from '../pages/mediaplayer/mediaplayer';
@@ -24,6 +25,10 @@ import {PhotoViewer} from '@ionic-native/photo-viewer';
 import {SinglePage} from '../pages/single/single';
 import {FormsModule} from '@angular/forms';
 import {MapProvider} from '../providers/map/map';
+import {CategoriesPageModule} from '../pages/categories/categories.module';
+import {HomePageModule} from '../pages/home/home.module';
+import { Data } from '../providers/data/data';
+
 
 @NgModule({
   declarations: [
@@ -37,14 +42,16 @@ import {MapProvider} from '../providers/map/map';
     ProfilePage,
     UploadPage,
     MediaplayerPage,
-    SinglePage
+    SinglePage,
+    CategoriesPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     PipesModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,15 +65,17 @@ import {MapProvider} from '../providers/map/map';
     ProfilePage,
     UploadPage,
     MediaplayerPage,
-    SinglePage
+    SinglePage,
+    CategoriesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     MediaProvider,
     MapProvider,
-    PhotoViewer
+    PhotoViewer,
+    Data,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
