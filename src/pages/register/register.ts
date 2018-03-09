@@ -19,6 +19,7 @@ import {HomePage} from '../home/home';
 })
 export class RegisterPage {
 
+  tabBarElement: any;
   login: boolean = true;
 
   user: User = {
@@ -30,12 +31,14 @@ export class RegisterPage {
   constructor(
     private navCtrl: NavController, public navParams: NavParams,
     public mediaProvider: MediaProvider) {
-
+    this.tabBarElement = document.querySelector('.tabbar');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+    this.tabBarElement.style.display = 'none';
   }
+
   register() {
     console.log(this.user);
 

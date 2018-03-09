@@ -22,6 +22,10 @@ export class MediaProvider {
     console.log('Hello MediaProvider Provider');
   }
 
+  public isLoggedIn(){
+    return localStorage.getItem('token');
+  }
+
   public logout() {
     localStorage.removeItem('token');
     console.log('User ' + this.username + ' logged out.');
