@@ -1,9 +1,8 @@
-
-.tabbar show-tabbar {
-  display: none;
-}
-
 page-register {
+
+  .tabbar show-tabbar {
+    display: none;
+  }
 
   .login-content {
 
@@ -32,13 +31,13 @@ page-register {
     }
 
     ion-item {
-      border-radius: 30px !important;
-      padding-left: 30px !important;
+      border-radius: 30px;
+      padding-left: 30px;
       font-size: 0.9em;
       margin-bottom: 10px;
       border: 1px solid #ffffff;
-      border-bottom: 0px !important;
-      box-shadow: none !important;
+      border-bottom: 0px;
+      box-shadow: none;
     }
 
     .signup-col {
@@ -47,13 +46,13 @@ page-register {
     }
 
     .item-inner {
-      border-bottom-color: #ffffff !important;
-      box-shadow: none !important;
+      border-bottom-color: #ffffff;
+      box-shadow: none;
     }
 
     .submit-btn {
       background: #51CFB1;
-      border-radius: 30px !important;
+      border-radius: 30px;
       border: 1px solid #ffffff;
     }
 
