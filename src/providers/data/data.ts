@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class Data {
 
   sports: any;
+  searchTerm: string = '';
 
   constructor(public http: Http) {
 
@@ -26,11 +27,8 @@ export class Data {
   }
 
   filterItems(searchTerm){
-
     return this.sports.filter((item) => {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
-
   }
-
 }

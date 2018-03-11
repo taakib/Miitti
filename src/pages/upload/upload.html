@@ -16,13 +16,15 @@
 
 
 <ion-content padding>
-  <ion-list-header>Upload a picture</ion-list-header>
+  <ion-item no-lines id="title">
+    <ion-label id="new-event-title">Create a new event</ion-label>
+  </ion-item>
+  <ion-item no-lines id="image-item">
+    <ion-img width="304" height="170" src="../../assets/imgs/uploadpic.jpg"></ion-img>
+  </ion-item>
+  <br>
   <ion-list>
   <form (submit)="startUpload()">
-    <ion-item>
-    <input type=file name="file" (change)="setFile($event)">
-    </ion-item>
-    <br>
     <ion-item>
     <ion-input type="text" [(ngModel)]="media.title" placeholder="Title" name="Title"></ion-input>
     </ion-item>
@@ -31,8 +33,21 @@
     <ion-textarea placeholder="Description" name="description" [(ngModel)]="media.description"></ion-textarea>
     </ion-item>
     <br>
+    <ion-item>
+      <input type=file name="file" (change)="setFile($event)">
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label>Select activity: </ion-label>
+      <ion-select interface ="popover" id="sportSelect">
+        <ion-option *ngFor="let item of sports" value="{{item.title}}">{{item.title}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <br>
     <button ion-button round color="miittigold" icon-start type="submit">
       <ion-icon name="add"></ion-icon>Upload</button>
   </form>
   </ion-list>
+
+
 </ion-content>

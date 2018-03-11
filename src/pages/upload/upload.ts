@@ -7,6 +7,7 @@ import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../models/media';
 import {HomePage} from '../home/home';
+import { Data } from '../../providers/data/data';
 
 /**
  * Generated class for the UploadPage page.
@@ -28,11 +29,14 @@ export class UploadPage {
   };
 
   file: File;
+  sports: any;
+  searchTerm: string = '';
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public mediaProvider: MediaProvider) {
+    public mediaProvider: MediaProvider,
+    public dataService: Data) {
   }
 
   setFile(evt) {
@@ -69,6 +73,11 @@ export class UploadPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UploadPage');
+    this.setFilteredItems();
+  }
+
+  setFilteredItems() {
+    this.sports = this.dataService.filterItems(this.searchTerm);
   }
 
 }

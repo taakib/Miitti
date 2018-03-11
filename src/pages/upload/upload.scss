@@ -1,17 +1,26 @@
-page-upload {
-
-}
-.titleicon {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  top: 5px;
-  text-align:center;
-}
 ion-content {
+
   background-color: $miittipurple !important;
-}
-ion-list-header {
-  color: $miittigold !important;
+
+  .titleicon {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    top: 5px;
+    text-align: center;
+  }
+
+  #title,
+  #image-item {
+    background-color: $miittipurple;
+  }
+  #new-event-title {
+    color: $miittigold !important;
+    text-align: center;
+    font-size: 28px !important;
+    font-family: Streetwear;
+    border-bottom: 2px solid $miittigold;
+  }
+
 }
