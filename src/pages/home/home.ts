@@ -4,6 +4,7 @@ import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {LoginPage} from '../login/login';
 import {SinglePage} from '../single/single';
+import {RegisterPage} from '../register/register';
 
 /**
  * Generated class for the HomePage page.
@@ -72,10 +73,10 @@ export class HomePage {
           localStorage.setItem('user', JSON.stringify(response));
         }, (error: HttpErrorResponse) => {
           console.log(error);
-          this.navCtrl.setRoot(LoginPage);
+          this.navCtrl.setRoot(RegisterPage);
         });
     } else {
-      this.navCtrl.setRoot(LoginPage);
+      this.navCtrl.setRoot(RegisterPage);
     }
 
     this.mediaProvider.getPostByTag().subscribe(data => {

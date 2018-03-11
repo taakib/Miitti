@@ -54,7 +54,6 @@ export class SinglePage {
     });
   }
 
-
   addComment() {
     this.commentData.file_id = this.file_id;
     this.mediaProvider.postComment(localStorage.getItem('token'), this.commentData)
