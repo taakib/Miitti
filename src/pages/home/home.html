@@ -34,7 +34,9 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <h2>Newest activities:</h2>
+  <ion-item no-lines id="title">
+    <ion-label id="new-event-title">Latest activities</ion-label>
+  </ion-item>
 
   <ion-grid>
     <ion-row *ngFor="let row of grid">
@@ -50,7 +52,7 @@
                  [src]="mediaProvider.mediaUrl + media.filename"
                  controls></audio>
 
-          <ion-card-content>
+          <ion-card-content class="card">
             <ion-card-title>{{ media.title }}</ion-card-title>
             <ion-card-title class="card-text">{{ media.description }}</ion-card-title>
           </ion-card-content>

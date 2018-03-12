@@ -24,13 +24,17 @@ page-home {
 
   ion-label {
     color: #ffffff;
-    font-size: 18px;
+    font-size: 10px;
     font-family: "Roboto", "Helvetica Neue", sans-serif;
     text-align: center;
   }
 
   ion-card-title{
     font-family: Streetwear;
+    font-weight: 100;
+  }
+  .card{
+    border-radius: 10px;
   }
 
   .card-text {
@@ -63,6 +67,21 @@ page-home {
     height: auto;
     animation: animation 3100ms linear infinite both;
     animation-delay: 1s;
+  }
+
+  #title,
+  #image-item {
+    background-color: $secondary;
+  }
+
+  #new-event-title {
+    color: $primary !important;
+    text-align: center;
+    font-size: 28px !important;
+    font-family: Streetwear;
+    border-bottom: 2px solid $primary;
+    margin-top: 0;
+    padding-top: 0;
   }
 
   @keyframes pulse {
