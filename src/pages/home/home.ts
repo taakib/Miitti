@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {LoginPage} from '../login/login';
@@ -41,6 +41,7 @@ export class HomePage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
+    this.drawGrid();
 
     setTimeout(() => {
       console.log('Async operation has ended');
@@ -50,9 +51,10 @@ export class HomePage {
 
   postAttending(id) {
     const file_id = {
-      file_id: id
+      file_id: id,
     };
     console.log(file_id);
+
     this.mediaProvider.postFavourite(localStorage.getItem('token'), file_id)
     .subscribe(response => {
       console.log(response);
@@ -61,33 +63,15 @@ export class HomePage {
       this.dataService.presentAlert('Error', 'You are already attending this activity!');
       console.log(error)
     });
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-    this.tabBarElement.style.display = 'none';
-    setTimeout(() => {
-      this.splash = false;
-      this.tabBarElement.style.display = 'flex';
-    }, 4000);
-    if (localStorage.getItem('token') !== null) {
-      this.mediaProvider.getUserData(localStorage.getItem('token')).
-        subscribe(response => {
-          this.mediaProvider.loggedIn = true;
-          localStorage.setItem('user', JSON.stringify(response));
-        }, (error: HttpErrorResponse) => {
-          console.log(error);
-          this.navCtrl.setRoot(RegisterPage);
-        });
-    } else {
-      this.navCtrl.setRoot(RegisterPage);
-    }
-
+  drawGrid() {
     this.mediaProvider.getPostByTag().subscribe(data => {
       console.log(data);
       this.mediaArray = data;
       this.mediaArray.reverse();
-      this.grid = Array(Math.ceil(this.mediaArray.length) ); //MATHS!
+      this.grid = Array(Math.ceil(this.mediaArray.length)); //MATHS!
       console.log(this.grid);
       let rowNum = 0; //counter to iterate over the rows in the grid
 
@@ -108,4 +92,29 @@ export class HomePage {
       console.log(this.grid);
     });
   }
+
+  ionViewDidLoad() {
+    console.log('Refreshing HomePage');
+    this.tabBarElement.style.display = 'none';
+    setTimeout(() => {
+      this.tabBarElement.style.display = 'flex';
+      this.splash = false;
+    }, 4000);
+
+    if (localStorage.getItem('token') !== null) {
+      this.mediaProvider.getUserData(localStorage.getItem('token')).
+        subscribe(response => {
+          this.mediaProvider.loggedIn = true;
+          localStorage.setItem('user', JSON.stringify(response));
+        }, (error: HttpErrorResponse) => {
+          console.log(error);
+          this.navCtrl.setRoot(RegisterPage);
+        });
+    } else {
+      this.navCtrl.setRoot(RegisterPage);
+    }
+    this.drawGrid();
+
+  }
+
 }
