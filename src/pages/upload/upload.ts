@@ -8,7 +8,6 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../models/media';
 import {HomePage} from '../home/home';
 import { Data } from '../../providers/data/data';
-import {AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the UploadPage page.
@@ -53,7 +52,6 @@ export class UploadPage {
 
     this.mediaProvider.postUserFile(formData).subscribe(response => {
       console.log(response);
-      alert('Picture uploaded!');
       const fileId = response['file_id'];
       const tagContent = {
         file_id: fileId,
