@@ -58,7 +58,7 @@ export class ProfilePage {
         console.log(this.mediaGrid);
         let rowNum = 0; //counter to iterate over the rows in the grid
 
-        for (let i = 0; i < this.userMedia.length; i += 2) { //iterate images
+        for (let i = 0; i < this.userMedia.length; i += 2) { //iterate imgs
 
           this.mediaGrid[rowNum] = Array(1); //declare two elements per row
 

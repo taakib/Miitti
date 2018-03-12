@@ -87,7 +87,7 @@ export class HomePage {
       console.log(this.grid);
       let rowNum = 0; //counter to iterate over the rows in the grid
 
-      for (let i = 0; i < this.mediaArray.length; i += 2) { //iterate images
+      for (let i = 0; i < this.mediaArray.length; i += 2) { //iterate imgs
 
         this.grid[rowNum] = Array(1); //declare two elements per row
 

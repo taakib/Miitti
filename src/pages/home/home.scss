@@ -7,18 +7,20 @@ page-home {
     left: 0;
     z-index: 100000;
     width: 100%;
-    background-color: #002a3e;
+    background-color: #588F27;
   }
 
   ion-content {
-    background: -webkit-linear-gradient(to right, #422275, #552583) !important; /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #422275, #552583) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #A9CF54, #A9CF54) !important; /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #A9CF54, #A9CF54) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   img {
     max-width: 100%;
     border: 0;
   }
+
+
 
   ion-label {
     color: #ffffff;
@@ -27,9 +29,17 @@ page-home {
     text-align: center;
   }
 
+  ion-card-title{
+    font-family: Streetwear;
+  }
+
+  .card-text {
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+  }
+
   .flb {
 
-    background-color: #552583;
+    background-color: #A9CF54;
     height: 100%;
     width: 100%;
     animation: pulse 1s linear forwards;
