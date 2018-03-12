@@ -91,5 +91,4 @@
     </plugin>
     <plugin name="com.telerik.plugins.nativepagetransitions" spec="^0.6.5" />
     <allow-navigation href="http://10.112.212.107:8100" />
-    <engine name="android" spec="7.0.0" />
 </widget>

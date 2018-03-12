@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {AlertController} from 'ionic-angular';
 
 @Injectable()
 export class Data {
@@ -8,7 +9,7 @@ export class Data {
   sports: any;
   searchTerm: string = '';
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private alertCtrl: AlertController) {
 
     this.sports = [
       {title: 'Football'},
@@ -31,4 +32,13 @@ export class Data {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
+
+  public presentAlert(title, infoText) {
+      let alert = this.alertCtrl.create({
+        title: title,
+        subTitle: infoText,
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
 }

@@ -8,6 +8,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../models/media';
 import {HomePage} from '../home/home';
 import { Data } from '../../providers/data/data';
+import {AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the UploadPage page.
@@ -61,12 +62,15 @@ export class UploadPage {
       this.mediaProvider.postTag(tagContent, localStorage.getItem('token')).
         subscribe(response => {
           setTimeout(() => {
-            this.navCtrl.setRoot(HomePage);
+            this.dataService.presentAlert('Submitted', 'Your activity was submitted successfully!');
+            this.navCtrl.setRoot(UploadPage);
           }, 1500);
         }, (tagError: HttpErrorResponse) => {
           console.log(tagError);
+          this.dataService.presentAlert('Error', 'There was an error in upload!');
         });
     }, (error: HttpErrorResponse) => {
+      this.dataService.presentAlert('Error', 'There was an error in upload!');
       console.log(error);
     });
   }

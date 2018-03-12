@@ -29,7 +29,6 @@
     "@ionic/storage": "2.1.3",
     "com-sarriaroman-photoviewer": "^1.1.16",
     "com.telerik.plugins.nativepagetransitions": "^0.6.5",
-    "cordova-android": "7.0.0",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-googlemaps": "^2.2.5",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -63,8 +62,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {}
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }
