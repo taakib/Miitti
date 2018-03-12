@@ -28,3 +28,25 @@
   text-align:center !important;
 }
 
+//  Centering title
+// --------------------------------------------------
+// a fix for centering the title on all the platforms
+
+ion-header {
+
+  .button-md {
+    box-shadow: none;
+  }
+
+  .toolbar-title {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}
+
