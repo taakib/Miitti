@@ -12,7 +12,8 @@ ion-content {
   }
 
   #title,
-  #image-item {
+  #image-item,
+  ion-img {
     background-color: $secondary;
   }
   #new-event-title {
@@ -21,6 +22,9 @@ ion-content {
     font-size: 28px !important;
     font-family: Streetwear;
     border-bottom: 2px solid $primary;
+  }
+  ion-item {
+    border-radius: 10px !important;
   }
 
 }
