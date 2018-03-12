@@ -13,7 +13,7 @@ page-profile {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: solid $miittigold;
+  border: solid $primary;
   display: flex;
   position: relative;
   align-items: center;
@@ -23,5 +23,5 @@ page-profile {
   background-color: rgba(218,222,222,0.6);
 }
 ion-label {
-  color: $miittipurple;
+  color: $primary;
 }
