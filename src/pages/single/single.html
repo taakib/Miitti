@@ -7,22 +7,24 @@
 <ion-header>
 
   <ion-navbar color='miittipurple'>
-    <div class="titleicon">
-      <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
-    </div>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <img src="../../assets/imgs/LogoWhite.svg" alt="logo" height="40px"/>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
 
   <ion-card>
-    <ion-card-title>{{title}}</ion-card-title>
     <img [src]="url" (click)="showImage()">
     <div id="map_canvas" #map_canvas *ngIf="message === ''">
     </div>
     <ion-card-content>
+      <h1 class="card-text">Activity: {{title}}</h1>
       <p class="card-text">Posted by: {{username}}</p>
       <p class="card-text">Description: {{ description }}</p>
       <p class="card-text">Tagged as: {{ tags }}</p>
@@ -31,12 +33,14 @@
 
   <div class="form" color="primary">
     <form id="commentForm">
-      <ion-item>
+      <ion-card>
+        <ion-item>
         <ion-label color="primary" floating>Write a comment</ion-label>
         <ion-input [(ngModel)]="commentData.comment" type="text" name="comment"></ion-input>
-      </ion-item>
+        </ion-item>
+      </ion-card>
     </form>
-    <button *ngIf="commentData.comment" class="commen t-btn" ion-button block (click)="addComment()">
+    <button *ngIf="commentData.comment" class="comment-btn" ion-button block (click)="addComment()">
       <ion-icon *ngIf="commentData.comment" name="text"></ion-icon>
     </button>
   </div>

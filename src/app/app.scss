@@ -15,4 +15,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@font-face {
+  font-family: "Streetwear";
+  src: url(../assets/font/Streetwear.otf)
+}
+
+.title-icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-top: 8px;
+  text-align:center;
+}
 

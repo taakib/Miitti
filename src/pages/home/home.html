@@ -5,11 +5,12 @@
     <div class="Aligner-item Aligner-item--bottom"></div>
   </div>
 </div>
+
 <ion-header>
   <ion-navbar color='miittipurple'>
-    <div class="titleicon">
-      <img src="../../assets/imgs/LogoWhite.svg" width="100px"/>
-    </div>
+    <ion-title>
+      <img src="../../assets/imgs/LogoWhite.svg" alt="logo" height="40px"/>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -23,6 +24,9 @@
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
+  <ion-list-header no-lines>
+    Newest activities:
+  </ion-list-header>
 
   <ion-grid>
     <ion-row *ngFor="let row of grid">
@@ -39,8 +43,8 @@
                  controls></audio>
 
           <ion-card-content>
-            <ion-card-title>{{ media.title }}</ion-card-title>
-            <p class="card-text">{{ media.description }}</p>
+            <ion-card-title>Activity: {{ media.title }}</ion-card-title>
+            <p class="card-text">Description: {{ media.description }}</p>
           </ion-card-content>
           <ion-row no-padding>
             <ion-col>
