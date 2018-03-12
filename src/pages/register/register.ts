@@ -4,6 +4,7 @@ import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {User} from '../../models/user';
 import {HomePage} from '../home/home';
+import {AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,6 +23,7 @@ export class RegisterPage {
   tabBarElement: any;
   login: boolean = true;
 
+
   user: User = {
     username: '',
     password: '',
@@ -30,7 +32,7 @@ export class RegisterPage {
 
   constructor(
     private navCtrl: NavController, public navParams: NavParams,
-    public mediaProvider: MediaProvider) {
+    public mediaProvider: MediaProvider, private alertCtrl: AlertController ) {
     this.tabBarElement = document.querySelector('.tabbar');
   }
 
@@ -49,7 +51,7 @@ export class RegisterPage {
         this.mediaProvider.password = this.user.password;
         this.login = !this.login;
       }, (error: HttpErrorResponse) => {
-        alert("Error in registeration!")
+        this.presentAlert(false);
         console.log(error.error.message);
       });
   }
@@ -62,6 +64,7 @@ export class RegisterPage {
       localStorage.setItem('token', data.token);
       this.navCtrl.setRoot(HomePage);
     }, error => {
+      this.presentAlert(true);
       console.log(error);
     });
   }
@@ -72,6 +75,24 @@ export class RegisterPage {
 
   public changeForm() {
     this.login = !this.login;
+  }
+
+  presentAlert(error) {
+    if (error == true) {
+      let alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: 'Wrong username or password!',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Error',
+        subTitle: 'Username already taken!',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
   }
 
 }

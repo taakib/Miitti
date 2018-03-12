@@ -6,6 +6,7 @@ page-register {
 
   .login-content {
 
+
     #myVideo {
       position: fixed;
       right: 0;
@@ -21,8 +22,8 @@ page-register {
 
     .login-box {
       /* background: #399F8B; */
-      padding: 20px 20px 0px 20px;
-      margin-top: 0%;
+      padding: 20px 20px 0px 20px !important;
+      margin-top: 0% !important;
     }
 
     ion-row {
@@ -31,34 +32,38 @@ page-register {
     }
 
     ion-item {
-      border-radius: 30px;
-      padding-left: 30px;
-      font-size: 0.9em;
-      margin-bottom: 10px;
-      border: 1px solid #ffffff;
-      border-bottom: 0px;
-      box-shadow: none;
+      border-radius: 30px !important;
+      padding-left: 30px !important;
+      font-size: 0.9em !important;
+      margin-bottom: 10px !important;
+      border: 1px solid #ffffff !important;
+      border-bottom: 0px !important;
+      box-shadow: none !important;
     }
 
     .signup-col {
-      margin: 0px 16px 0px 16px;
-      padding-bottom: 0px;
+      margin: 0px 16px 0px 16px !important;
+      padding-bottom: 0px !important;
     }
 
     .item-inner {
       border-bottom-color: #ffffff;
-      box-shadow: none;
+      box-shadow: none !important;
     }
 
     .submit-btn {
       background: #51CFB1;
-      border-radius: 30px;
-      border: 1px solid #ffffff;
+      border-radius: 30px !important;
+      border: 1px solid #ffffff !important;
     }
 
     .register-btn {
       color: #ffffff;
-      font-size: 0.8em;
+      font-size: 0.8em !important;
+    }
+
+    button {
+      text-transform: uppercase;
     }
   }
 
