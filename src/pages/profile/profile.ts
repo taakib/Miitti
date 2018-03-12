@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {LoginPage} from '../login/login';
+import set = Reflect.set;
+import {RegisterPage} from '../register/register';
 
 /**
  * Generated class for the ProfilePage page.
@@ -18,7 +20,7 @@ import {LoginPage} from '../login/login';
 })
 export class ProfilePage {
 
-
+  username: string;
   userInfo: any;
   userMedia: Array<string>;
   mediaGrid: Array<Array<string>>;
@@ -26,13 +28,10 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider, public http: HttpClient) {
   }
 
-  doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+  public logout() {
+    localStorage.removeItem('token');
+    console.log('User ' + this.username + ' logged out.');
+    this.navCtrl.setRoot(RegisterPage);
   }
 
   ionViewDidLoad() {

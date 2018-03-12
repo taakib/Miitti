@@ -30,6 +30,7 @@ export class SinglePage {
   commenter: any;
   message = '';
   user: User;
+  comment: string;
 
   commentData: Comment = {
     file_id: "",
@@ -46,6 +47,16 @@ export class SinglePage {
     this.photoViewer.show(this.url, this.title, {share: false});
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.ionViewDidLoad();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   getUser(id: number) {
     this.mediaProvider.getUserInformation(localStorage.getItem('token'), id)
       .subscribe(data => {
@@ -58,7 +69,7 @@ export class SinglePage {
     this.commentData.file_id = this.file_id;
     this.mediaProvider.postComment(localStorage.getItem('token'), this.commentData)
     .subscribe(response => {
-      //this.refresh();
+      console.log(response);
       document.forms["commentForm"].reset();
     }, (error: HttpErrorResponse) => {
       console.log(error);
@@ -74,7 +85,6 @@ export class SinglePage {
         this.url = this.mediaProvider.mediaUrl + response['filename'];
         this.title = response['title'];
         this.description = response['description'];
-        this.userID = response['user_id'];
         this.mediaProvider.getTagByFile(response['file_id']).
           subscribe(response => {
             console.log(response);
@@ -84,6 +94,7 @@ export class SinglePage {
               this.mediaProvider.getUserData(localStorage.getItem('token'))
                 .subscribe( response => {
                   this.username = response['username'];
+                  this.userID = response['user_id'];
               })
 
               /*
