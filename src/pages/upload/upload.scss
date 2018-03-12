@@ -1,6 +1,6 @@
 ion-content {
 
-  background-color: $miittipurple !important;
+  background-color: $secondary !important;
 
   .titleicon {
     position: absolute;
@@ -13,14 +13,14 @@ ion-content {
 
   #title,
   #image-item {
-    background-color: $miittipurple;
+    background-color: $secondary;
   }
   #new-event-title {
-    color: $miittigold !important;
+    color: $primary !important;
     text-align: center;
     font-size: 28px !important;
     font-family: Streetwear;
-    border-bottom: 2px solid $miittigold;
+    border-bottom: 2px solid $primary;
   }
 
 }

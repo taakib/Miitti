@@ -1,7 +1,7 @@
 <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
   <div class="flb">
     <div class="Aligner-item Aligner-item--top"></div>
-    <img src="assets/imgs/LogoWhite.svg">
+    <img src="assets/imgs/MiittiLogo.png">
     <div class="Aligner-item Aligner-item--bottom"></div>
   </div>
 </div>
@@ -9,7 +9,7 @@
 <ion-header>
   <ion-navbar color='primary'>
     <ion-title>
-      <img src="assets/imgs/LogoWhite.svg" alt="logo" height="40px" type="image/svg+xml"/>
+      <img class="title-icon" src="assets/imgs/MiittiLogo.png" alt="logo" height="40px"/>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -42,8 +42,8 @@
                  controls></audio>
 
           <ion-card-content>
-            <ion-card-title>Activity: {{ media.title }}</ion-card-title>
-            <p class="card-text">Description: {{ media.description }}</p>
+            <ion-card-title>{{ media.title }}</ion-card-title>
+            <ion-card-content class="card-text">{{ media.description }}</ion-card-content>
           </ion-card-content>
           <ion-row no-padding>
             <ion-col>
