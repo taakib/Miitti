@@ -5,6 +5,8 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {LoginPage} from '../login/login';
 import {SinglePage} from '../single/single';
 import {RegisterPage} from '../register/register';
+import { Data } from '../../providers/data/data';
+
 
 /**
  * Generated class for the HomePage page.
@@ -27,7 +29,7 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
-    public mediaProvider: MediaProvider) {
+    public mediaProvider: MediaProvider, public dataService: Data) {
     this.tabBarElement = document.querySelector('.tabbar');
   }
 
@@ -52,12 +54,16 @@ export class HomePage {
       file_id: id,
     };
     console.log(file_id);
-    this.mediaProvider.postFavourite(localStorage.getItem('token'), file_id).
-      subscribe(response => {
-        console.log(response);
-      }, (error: HttpErrorResponse) => {
-        console.log(error);
-      });
+
+    this.mediaProvider.postFavourite(localStorage.getItem('token'), file_id)
+    .subscribe(response => {
+      console.log(response);
+      this.dataService.presentAlert('Attended!', 'You successfully signed up for this activity.');
+    }, (error: HttpErrorResponse) => {
+      this.dataService.presentAlert('Error', 'You are already attending this activity!');
+      console.log(error)
+    });
+
   }
 
   drawGrid() {

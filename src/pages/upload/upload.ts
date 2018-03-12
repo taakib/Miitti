@@ -52,7 +52,6 @@ export class UploadPage {
 
     this.mediaProvider.postUserFile(formData).subscribe(response => {
       console.log(response);
-      alert('Picture uploaded!');
       const fileId = response['file_id'];
       const tagContent = {
         file_id: fileId,
@@ -61,12 +60,15 @@ export class UploadPage {
       this.mediaProvider.postTag(tagContent, localStorage.getItem('token')).
         subscribe(response => {
           setTimeout(() => {
-            this.navCtrl.setRoot(HomePage);
+            this.dataService.presentAlert('Submitted', 'Your activity was submitted successfully!');
+            this.navCtrl.setRoot(UploadPage);
           }, 1500);
         }, (tagError: HttpErrorResponse) => {
           console.log(tagError);
+          this.dataService.presentAlert('Error', 'There was an error in upload!');
         });
     }, (error: HttpErrorResponse) => {
+      this.dataService.presentAlert('Error', 'There was an error in upload!');
       console.log(error);
     });
   }
