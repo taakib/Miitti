@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from '../home/home';
 import { Data } from '../../providers/data/data';
+import {RegisterPage} from '../register/register';
 
 @Component({
   selector: 'page-categories',
@@ -25,6 +26,12 @@ export class CategoriesPage {
 
  openCategory() {
     this.navCtrl.push(HomePage);
+  }
+
+
+  public logout() {
+    localStorage.removeItem('token');
+    this.navCtrl.setRoot(RegisterPage);
   }
 
 }

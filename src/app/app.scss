@@ -27,6 +27,13 @@
 
 ion-header {
 
+  #logout-icon {
+    font-size: 36px;
+  }
+  #logout-button {
+    background-color: $primary;
+  }
+
   .button-md {
     box-shadow: none;
   }
