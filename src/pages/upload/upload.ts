@@ -45,7 +45,7 @@ export class UploadPage {
     this.file = evt.target.files[0];
   }
 
-  startUpload() {
+  startUpload() {   /*Upload file method */
     const formData = new FormData();
     formData.append('file', this.file);
     formData.append('title', this.media.title);
@@ -56,7 +56,7 @@ export class UploadPage {
       const fileId = response['file_id'];
       const tagContent = {
         file_id: fileId,
-        tag: 'Miitti',
+        tag: 'Miitti1',
       };
       this.mediaProvider.postTag(tagContent, localStorage.getItem('token')).
         subscribe(response => {

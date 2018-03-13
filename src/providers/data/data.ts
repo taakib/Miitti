@@ -11,6 +11,8 @@ export class Data {
 
   constructor(public http: Http, private alertCtrl: AlertController) {
 
+    /*All currently available sports are found here in an array*/
+
     this.sports = [
       {title: 'Football'},
       {title: 'Ice Hockey'},
@@ -27,13 +29,13 @@ export class Data {
 
   }
 
-  filterItems(searchTerm){
+  filterItems(searchTerm) {
     return this.sports.filter((item) => {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
 
-  public presentAlert(title, infoText) {
+  public presentAlert(title, infoText) {    /* Method to create an alert */
       let alert = this.alertCtrl.create({
         title: title,
         subTitle: infoText,

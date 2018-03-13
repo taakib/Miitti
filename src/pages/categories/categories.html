@@ -4,11 +4,9 @@
     <ion-buttons left>
       <!-- left aligned content here -->
     </ion-buttons>
-
     <ion-title>
       <img src="assets/imgs/MiittiLogo.png" alt="logo" height="40px"/>
     </ion-title>
-
     <ion-buttons right>
       <!-- left aligned content here -->
       <button id="logout-button" (click)='logout()'>
@@ -19,9 +17,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()">
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"> <!-- Search bar -->
   </ion-searchbar>
 
+  <!-- All categories for available sports created here -->
   <ion-list>
     <ion-item *ngFor="let item of sports" class="category">
       <ion-thumbnail item-start>
@@ -32,6 +31,4 @@
       <button (click)= "openCategory()" ion-button clear item-end><ion-icon name="arrow-forward"></ion-icon></button>
     </ion-item>
   </ion-list>
-
-
 </ion-content>

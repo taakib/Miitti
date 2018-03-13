@@ -87,7 +87,7 @@ export class MediaProvider {
   }
 
   getPostByTag() {
-    return this.http.get<Array<string>>(this.apiUrl + '/tags/Miitti');
+    return this.http.get<Array<string>>(this.apiUrl + '/tags/Miitti1');
   }
 
   getAllMedia() {

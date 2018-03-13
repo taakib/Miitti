@@ -77,7 +77,7 @@ export class RegisterPage {
     this.login = !this.login;
   }
 
-  presentAlert(error) {
+  presentAlert(error) {   /*True = login & False = register*/
     if (error == true) {
       let alert = this.alertCtrl.create({
         title: 'Error',
