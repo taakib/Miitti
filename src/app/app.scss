@@ -20,19 +20,19 @@
   src: url(../assets/fonts/Streetwear.otf)
 }
 
-.title-icon {
-  position: absolute !important;
-  left: 0 !important;
-  bottom: 0 !important;
-  margin-top: 8px !important;
-  text-align:center !important;
-}
 
 //  Centering title
 // --------------------------------------------------
 // a fix for centering the title on all the platforms
 
 ion-header {
+
+  #logout-icon {
+    font-size: 36px;
+  }
+  #logout-button {
+    background-color: $primary;
+  }
 
   .button-md {
     box-shadow: none;

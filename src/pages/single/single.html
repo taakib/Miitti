@@ -1,18 +1,10 @@
 <ion-header>
   <!-- use ion-toolbar for a normal toolbar and ion-navbar for navigation -->
-  <ion-toolbar color='primary'>
-    <ion-buttons left>
-      <!-- left aligned content here -->
-    </ion-buttons>
-
+  <ion-navbar class="lul" color='primary'>
     <ion-title>
       <img src="assets/imgs/MiittiLogo.png" alt="logo" height="40px"/>
     </ion-title>
-
-    <ion-buttons right>
-      <!-- left aligned content here -->
-    </ion-buttons>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 
@@ -35,6 +27,12 @@
     <ion-card-content *ngIf="commentsLoaded">
       <h2>Description:</h2>
       <p class="description">{{ description}}</p>
+      
+    <ion-card-content class="card">
+      <h1 class="card-title">{{title}}</h1> <br>
+      <p class="card-text">{{ description }}</p> <br>
+      <p class="card-author">Posted by: {{username}}</p>
+
     </ion-card-content>
 
     <ion-card-content>

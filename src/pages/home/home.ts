@@ -117,4 +117,9 @@ export class HomePage {
 
   }
 
+  public logout() {
+    localStorage.removeItem('token');
+    this.navCtrl.setRoot(RegisterPage);
+  }
+
 }

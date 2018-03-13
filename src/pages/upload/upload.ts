@@ -8,6 +8,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../models/media';
 import {HomePage} from '../home/home';
 import { Data } from '../../providers/data/data';
+import {RegisterPage} from '../register/register';
 
 /**
  * Generated class for the UploadPage page.
@@ -80,6 +81,11 @@ export class UploadPage {
 
   setFilteredItems() {
     this.sports = this.dataService.filterItems(this.searchTerm);
+  }
+
+  public logout() {
+    localStorage.removeItem('token');
+    this.navCtrl.setRoot(RegisterPage);
   }
 
 }
