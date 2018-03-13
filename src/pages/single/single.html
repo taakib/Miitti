@@ -13,15 +13,6 @@
   <ion-card>
     <img [src]="url" (click)="showImage()">
 
-    <ion-card-content>
-      <h1 class="card-text">{{title}}</h1>
-    </ion-card-content>
-
-    <ion-card-content class="likes">
-      <button (click)="addToFavourites(media.file_id)" ion-button clear small color="danger"></button>
-      <ion-icon name='star'></ion-icon>
-      <div class="likecount"><h1>{{attendCount}}{{likeInfo}}</h1></div>
-    </ion-card-content>
 
     <ion-card-content *ngIf="commentsLoaded">
       <h2>Description:</h2>
@@ -31,9 +22,15 @@
       <h1 class="card-title">{{title}}</h1> <br>
       <p class="card-text">{{ description }}</p> <br>
       <p class="card-author">Posted by: {{username}}</p>
-
     </ion-card-content>
 
+<!--
+    <ion-card-content class="likes">
+      <button (click)="addToFavourites(media.file_id)" ion-button clear small color="danger"></button>
+      <ion-icon name='star'></ion-icon>
+      <div class="likecount"><h1>{{attendCount}}{{likeInfo}}</h1></div>
+    </ion-card-content>
+-->
     <ion-card-content>
       <ion-list>
         <div *ngIf="commentsLoaded">
@@ -44,7 +41,9 @@
         </div>
       </ion-list>
     </ion-card-content>
+  </ion-card>
 
+  <ion-card>
     <form>
       <div class="commentbar">
         <ion-item class="commentfield">
