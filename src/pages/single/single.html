@@ -21,31 +21,45 @@
 
   <ion-card>
     <img [src]="url" (click)="showImage()">
-    <div id="map_canvas" #map_canvas *ngIf="message === ''">
-    </div>
-    <ion-card-content>
-      <h1 class="card-text">Activity: {{title}}</h1>
-      <p class="card-text">Posted by: {{username}}</p>
-      <p class="card-text">Description: {{ description }}</p>
-      <p class="card-text">Tagged as: {{ tags }}</p>
-    </ion-card-content>
-    <ion-card-content>
-      <!-- <p class="card-text">{{ comment.comment }}</p> -->
-    </ion-card-content>
-  </ion-card>
 
-  <div class="form" color="primary">
-    <form id="commentForm">
-      <ion-card>
-        <ion-item>
-        <ion-label color="primary" floating>Write a comment</ion-label>
-        <ion-input [(ngModel)]="commentData.comment" type="text" name="comment"></ion-input>
+    <ion-card-content>
+      <h1 class="card-text">Title: {{title}}</h1>
+    </ion-card-content>
+
+    <ion-card-content class="likes">
+      <button (click)="addToFavourites(media.file_id)" ion-button clear small color="danger"></button>
+      <ion-icon name='star'></ion-icon>
+      <div class="likecount"><h1>{{attendCount}}{{likeInfo}}</h1></div>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="commentsLoaded">
+      <h2>Description:</h2>
+      <p class="description">{{ description}}</p>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-list>
+        <div *ngIf="commentsLoaded">
+          <ion-card *ngFor="let comment of this.commentArray" class="commentcard">
+            <p class="commenter">{{comment.user.username}}</p>
+            <p class="comment">{{comment.comment}}</p>
+          </ion-card>
+        </div>
+      </ion-list>
+    </ion-card-content>
+
+    <form>
+      <div class="commentbar">
+        <ion-item class="commentfield">
+          <ion-label floating color="gray" class="floater">Comment as {{currentUserName}}</ion-label>
+          <ion-textarea [(ngModel)]="commentData.comment" type="text" name="comment" id="comment"></ion-textarea>
         </ion-item>
-      </ion-card>
+        <button primary block class="button" type="submit" (click)="pushComment()" color="button">
+          Comment
+        </button>
+      </div>
     </form>
-    <button *ngIf="commentData.comment" class="comment-btn" ion-button block (click)="addComment()">
-      <ion-icon *ngIf="commentData.comment" name="text"></ion-icon>
-    </button>
-  </div>
+
+  </ion-card>
 
 </ion-content>

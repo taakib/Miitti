@@ -1,5 +1,5 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../../models/user';
 
@@ -22,7 +22,7 @@ export class MediaProvider {
     console.log('Hello MediaProvider Provider');
   }
 
-  public isLoggedIn(){
+  public isLoggedIn() {
     return localStorage.getItem('token');
   }
 
@@ -66,9 +66,8 @@ export class MediaProvider {
     return this.http.post(this.apiUrl + '/users', user);
   }
 
-
   getNewestFile() {
-    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=1')
+    return this.http.get(this.apiUrl + this.mediaUrl + '?limit=1');
   }
 
   getSingleMedia(id) {
@@ -94,30 +93,29 @@ export class MediaProvider {
     return this.http.get<Array<string>>(this.apiUrl + '/media');
   }
 
-  postFavourite(token, file_id) {
+  postAttending(token, file_id) {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', token),
     };
     return this.http.post(this.apiUrl + '/favourites', file_id, settings);
   }
 
-  getUserInformation(token, id) {
+  getUserInformationById(token, id) {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', token),
     };
-    return this.http.get<Array<string>>(this.apiUrl + '/users/' + id, settings);
+    return this.http.get(this.apiUrl + '/users/' + id, settings);
   }
 
-
-  postComment(token, commentData) {
+  postComment(commentData, token) {
     const settings = {
-      headers: new HttpHeaders().set('x-access-token', token)
+      headers: new HttpHeaders().set('x-access-token', token),
     };
-    return this.http.post(this.apiUrl + '/comments', commentData, settings)
+    return this.http.post(this.apiUrl + '/comments', commentData, settings);
   }
 
-  getCommentsFile(fileId: number) {
-    return this.http.get(this.apiUrl + '/comments/file/' + fileId);
+  getCommentsByFile(id) {
+    return this.http.get<Array<object>>(this.apiUrl + '/comments/file/' + id);
   }
 
   getPostsByUser(token) {
@@ -125,7 +123,10 @@ export class MediaProvider {
       headers: new HttpHeaders().set('x-access-token', token),
     };
     return this.http.get<Array<string>>(this.apiUrl + '/media/user', settings);
-    }
+  }
 
+  getAttending(id) {
+    return this.http.get(this.apiUrl + '/favourites/file/' + id);
+  }
 
 }
