@@ -14,7 +14,7 @@
     <img [src]="url" (click)="showImage()">
 
     <ion-card-content>
-      <h1 class="card-text">Title: {{title}}</h1>
+      <h1 class="card-text">{{title}}</h1>
     </ion-card-content>
 
     <ion-card-content class="likes">
@@ -26,7 +26,7 @@
     <ion-card-content *ngIf="commentsLoaded">
       <h2>Description:</h2>
       <p class="description">{{ description}}</p>
-      
+      </ion-card-content>
     <ion-card-content class="card">
       <h1 class="card-title">{{title}}</h1> <br>
       <p class="card-text">{{ description }}</p> <br>
