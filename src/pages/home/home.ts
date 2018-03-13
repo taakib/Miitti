@@ -55,7 +55,7 @@ export class HomePage {
     };
     console.log(file_id);
 
-    this.mediaProvider.postFavourite(localStorage.getItem('token'), file_id)
+    this.mediaProvider.postAttending(localStorage.getItem('token'), file_id)
     .subscribe(response => {
       console.log(response);
       this.dataService.presentAlert('Attended!', 'You successfully signed up for this activity.');
